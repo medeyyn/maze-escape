@@ -1,34 +1,62 @@
 /**
  * Missions 1 and 2. Building the maze out of the walls.
- * A wall k joins the cells w.a()[k] and w.b()[k] and costs w.cost()[k]. Indexes start from 0,
- * the line number in walls.txt is the index + 1. The cells are connected by DisjointSet.
+ * A wall k joins the cells w.a()[k] and w.b()[k]
+ * and costs w.cost()[k].
+ * Indexes start from 0.
+ * The line number in walls.txt is the index + 1.
  */
 public class Maze {
 
     /**
-     * Mission 1. Take the walls in the order of the file. Break a wall when its two cells are in different sets.
-     * Returns the indexes of the broken walls, in the order of breaking.
+     * Mission 1.
+     * Break walls in the order of the file.
+     * A wall is broken only if its cells belong
+     * to different sets.
      */
     public static int[] breakWalls(Input.Walls w) {
-        // TODO
-        return new int[0];
+
+        int n = w.cells();
+        DisjointSet dsu = new DisjointSet(n);
+
+        int[] broken = new int[n - 1];
+        int count = 0;
+
+        for (int i = 0; i < w.count(); i++) {
+
+            int a = w.a()[i];
+            int b = w.b()[i];
+
+            if (dsu.union(a, b)) {
+
+                broken[count] = i;
+                count++;
+
+                if (count == n - 1) {
+                    break;
+                }
+            }
+        }
+
+        return java.util.Arrays.copyOf(broken, count);
     }
 
     /**
-     * Mission 2. Kruskal: the same, but take the walls from the cheapest to the most expensive.
-     * Returns the indexes of the broken walls.
+     * Mission 2.
+     * Kruskal algorithm.
+     * Will be implemented in Mission 2.
      */
     public static int[] cheapestMaze(Input.Walls w) {
-        // TODO
+        // TODO: Mission 2
         return new int[0];
     }
 
     /**
-     * Mission 2. Prim with a priority queue. Returns the total cost of the cheapest maze.
-     * It must be equal to the total cost of cheapestMaze.
+     * Mission 2.
+     * Prim algorithm using a priority queue.
+     * Will be implemented in Mission 2.
      */
     public static long primCost(Input.Walls w) {
-        // TODO
+        // TODO: Mission 2
         return 0;
     }
 }
