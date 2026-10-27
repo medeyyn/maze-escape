@@ -1,29 +1,30 @@
+
 # Assignment 3. Maze Escape
 
-**Student ID:** 241496  
+**Student ID:** 251496  
 **Name:** Medina Maratova  
 **Group:** SE-2519  
 **Course:** Design and Analysis of Algorithms  
-**Maze size:** 9 x 12 (108 cells)
+**Maze size:** 132 cells (check rows and columns in data/walls.txt)
 
 ## Program output
 
 Results obtained using `java -cp out Main`:
 
 ```text
-Broken: 107
-Kept: 88
-Last broken wall: 164
-MST cost: 35010
-Heaviest broken wall: 881
-Path length: 35
-DFS visited: 53
-Dead ends: 31
-Zones: 9
-Largest zone: 20
+Broken: 131
+Kept: 110
+Last broken wall: 207
+MST cost: 36157
+Heaviest broken wall: 700
+Path length: 29
+DFS visited: 63
+Dead ends: 38
+Zones: 11
+Largest zone: 23
 Is DAG: 0
-Flow stages: 5
-Fastest route cost: 5
+Flow stages: 6
+Fastest route cost: 27
 ```
 
 My maze:
@@ -36,7 +37,7 @@ My maze:
 
 The `find` method returns the root of the set containing an element. The `union` method connects two different sets and returns false if they are already connected.
 
-I used path compression in `find` and union by size in `union`. These optimizations make the operations very efficient.
+I used path compression in `find` and union by size in `union`. These optimizations make the operations efficient.
 
 ### Mission 1. Building the maze
 
@@ -46,7 +47,7 @@ A rectangular grid contains R*(C-1) + C*(R-1) internal walls. After breaking R*C
 
 ### Mission 2. Minimum Spanning Tree
 
-My minimum spanning tree cost is 35010 using Kruskal. Prim should return the same value, since both algorithms find a minimum spanning tree of the same weighted graph.
+My minimum spanning tree cost is 36157 using Kruskal. Prim calculates the same minimum cost because both algorithms find a minimum spanning tree of the same weighted graph.
 
 Kruskal sorts edges by weight and uses DSU to avoid cycles. Prim grows the tree by selecting the cheapest edge connecting a visited cell to an unvisited cell.
 
@@ -66,13 +67,13 @@ A directed graph has no cycles exactly when every strongly connected component c
 
 The zones are numbered in topological order, so every edge between different zones goes from a smaller zone number to a larger one.
 
-This allows the algorithm to process each zone once and update the longest chain and shortest route using dynamic programming. The pass takes O(n + m) time when the graph is represented with adjacency lists.
+This allows the algorithm to process each zone once and update the longest chain and shortest route using dynamic programming. The pass takes O(n + m) time with adjacency lists.
 
 ## AI use
 
-I used ChatGPT to understand the assignment requirements, review Java code, explain DSU, Kruskal, Prim, DFS, Kosaraju, and DAG algorithms, and help identify and correct programming errors.
+I used ChatGPT to understand the assignment requirements, explain the algorithms, review Java code, and identify and correct programming errors.
 
-I also used AI-generated code suggestions while implementing and testing the assignment. I checked the implementation using the provided test program and reviewed the algorithm logic.
+I also used AI-generated code suggestions during implementation. I tested the code using the provided checker and reviewed the algorithm logic.
 
 ## Timing (Mission 7)
 
@@ -108,14 +109,14 @@ javac -d out src/*.java
 java tools/Check.java
 ```
 
-Results:
+Results from the provided examples:
 
 - Mission 0: All checks passed.
 - Tiny example: All 13 lines are right.
 - Small example: All 13 lines are right.
 - DAG example: All 13 lines are right.
 
-I also generated my individual maze using Student ID 241496 and ran the main program successfully.
+I generated my individual maze using Student ID 251496 and ran the main program successfully.
 
 ## Before submission
 
