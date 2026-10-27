@@ -5,7 +5,7 @@
 **Name:** Medina Maratova  
 **Group:** SE-2519  
 **Course:** Design and Analysis of Algorithms  
-**Maze size:** 132 cells (check rows and columns in data/walls.txt)
+**Maze size:** 11 x 12 (132 cells)
 
 ## Program output
 
